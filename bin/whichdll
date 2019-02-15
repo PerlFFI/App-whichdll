@@ -1,0 +1,13 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use 5.008001;
+use lib::findbin '../lib'; # dev-only
+use App::whichdll;
+
+# PODNAME: whichdll
+# ABSTRACT: Find dynamic libraries in the appropriate system path
+# VERSION
+
+exit App::whichdll->main(@ARGV);
