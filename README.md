@@ -1,4 +1,4 @@
-# whichdll [![Build Status](https://secure.travis-ci.org/plicease/App-whichdll.png)](http://travis-ci.org/plicease/App-whichdll)
+# whichdll [![Build Status](https://secure.travis-ci.org/Perl5-FFI/App-whichdll.png)](http://travis-ci.org/Perl5-FFI/App-whichdll)
 
 Find dynamic libraries in the appropriate path
 
