@@ -1,6 +1,6 @@
 use Test2::V0 -no_srand => 1;
 use App::whichdll;
-use Test::Script;
+use Test::Script 1.09;
 
 subtest 'version' => sub {
 
