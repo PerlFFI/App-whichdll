@@ -1,13 +1,15 @@
-# whichdll [![Build Status](https://secure.travis-ci.org/Perl5-FFI/App-whichdll.png)](http://travis-ci.org/Perl5-FFI/App-whichdll)
+# whichdll [![Build Status](https://travis-ci.org/PerlFFI/App-whichdll.svg)](http://travis-ci.org/PerlFFI/App-whichdll)
 
 Find dynamic libraries in the appropriate path
 
 # SYNOPSIS
 
-    $ whichdll xml2
-    $ whichdll -a xml2  # print all matches
-    $ whichdll -a \*    # print all DLLs
-    $ whichdll -s xml2  # silent mode
+```
+$ whichdll xml2
+$ whichdll -a xml2  # print all matches
+$ whichdll -a \*    # print all DLLs
+$ whichdll -s xml2  # silent mode
+```
 
 # DESCRIPTION
 
@@ -22,12 +24,14 @@ the appropriate full path.
 By default duplicates due to duplicate paths or symlinks will be removed.  You can see them using the `-x`
 option.  For example on Debian:
 
-    $ ./bin/whichdll -a xml2
-    /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
-    $ ./bin/whichdll -a -x xml2
-    /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
-    /usr/lib/x86_64-linux-gnu/libxml2.so => /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
-    /usr/lib/x86_64-linux-gnu/libxml2.so.2 => /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
+```perl
+$ ./bin/whichdll -a xml2
+/usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
+$ ./bin/whichdll -a -x xml2
+/usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
+/usr/lib/x86_64-linux-gnu/libxml2.so => /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
+/usr/lib/x86_64-linux-gnu/libxml2.so.2 => /usr/lib/x86_64-linux-gnu/libxml2.so.2.9.4
+```
 
 You can use the wildcard `*` to print all libraries.  This implies the `-a` option.
 
