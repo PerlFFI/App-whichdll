@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use 5.008001;
 use FFI::CheckLib 0.05 qw( find_lib );
-use Getopt::Std qw( getopts );
+use Getopt::Std qw( getopts );  ## no critic (Freenode::PreferredAlternatives)
 use Path::Tiny qw( path );
 
 # ABSTRACT: Find dynamic libraries
@@ -37,15 +37,15 @@ sub main
 {
   local @ARGV;
   (undef, @ARGV) = @_;
-  
+
   my %opts;
-  
+
   getopts('avsx', \%opts) || return _usage();
   return _version() if $opts{v};
   return _usage()   unless @ARGV;
-  
+
   my %seen;
-  
+
   foreach my $name (@ARGV)
   {
     my @result;
@@ -58,7 +58,7 @@ sub main
       my $result = find_lib( lib => $name );
       push @result, $result if defined $result;
     }
-    
+
     unless($opts{s})
     {
       foreach my $path (map { path($_) } @result)
@@ -87,14 +87,14 @@ sub main
         }
       }
     }
-    
+
     unless(@result)
     {
       print STDERR "$0: no $name in dynamic library path\n" unless $opts{s};
       return 1;
     }
   }
-  
+
   return 0;
 }
 
