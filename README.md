@@ -1,4 +1,4 @@
-# whichdll [![Build Status](https://travis-ci.org/PerlFFI/App-whichdll.svg)](http://travis-ci.org/PerlFFI/App-whichdll)
+# whichdll ![linux](https://github.com/PerlFFI/App-whichdll/workflows/linux/badge.svg)
 
 Find dynamic libraries in the appropriate path
 
