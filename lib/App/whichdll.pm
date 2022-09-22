@@ -3,8 +3,8 @@ package App::whichdll;
 use strict;
 use warnings;
 use 5.008001;
-use FFI::CheckLib 0.05 qw( find_lib );
-use Getopt::Std qw( getopts );  ## no critic (Freenode::PreferredAlternatives)
+use FFI::CheckLib 0.28 qw( find_lib );
+use Getopt::Long qw( GetOptions );
 use Path::Tiny qw( path );
 
 # ABSTRACT: Find dynamic libraries
@@ -40,22 +40,36 @@ sub main
 
   my %opts;
 
-  getopts('avsx', \%opts) || return _usage();
+  my @alien;
+
+  GetOptions(
+    "a"       => \$opts{a},
+    "v"       => \$opts{v},
+    "s"       => \$opts{s},
+    "x"       => \$opts{x},
+    "alien=s" => \@alien,
+  ) || return _usage();
   return _version() if $opts{v};
   return _usage()   unless @ARGV;
 
   my %seen;
+
+  my @extra_args;
+  if(@alien)
+  {
+    push @extra_args, alien => \@alien;
+  }
 
   foreach my $name (@ARGV)
   {
     my @result;
     if($opts{a} || $name eq '*')
     {
-      @result = find_lib( lib => '*', verify => sub { ($name eq '*') || ($_[0] eq $name) });
+      @result = find_lib( lib => '*', verify => sub { ($name eq '*') || ($_[0] eq $name) }, @extra_args);
     }
     else
     {
-      my $result = find_lib( lib => $name );
+      my $result = find_lib( lib => $name, @extra_args );
       push @result, $result if defined $result;
     }
 
@@ -116,8 +130,9 @@ EOF
 sub _usage
 {
   print <<"EOF";
-Usage: $0 [-a] [-s] [-v] dllname [dllname ...]
+Usage: $0 [-a] [-s] [-v] [--alien Alien::Name] dllname [dllname ...]
        -a       Print all matches in dynamic library path.
+       --alien  Include Perl Aliens in search
        -v       Prints version and exits
        -s       Silent mode
        -x       Do not prune duplicates (due to symlinks, etc.)
