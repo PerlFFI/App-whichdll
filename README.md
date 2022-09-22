@@ -41,6 +41,10 @@ You can use the wildcard `*` to print all libraries.  This implies the `-a` opti
 
 Print all matches instead of just the first one.
 
+## --alien Alien::Name
+
+Include Perl Alien in search, if available
+
 ## -s
 
 No output, just return 0 if any of the DLLs are found, or 1 if none are found.
