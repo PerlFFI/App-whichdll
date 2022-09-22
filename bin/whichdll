@@ -47,6 +47,10 @@ You can use the wildcard C<*> to print all libraries.  This implies the C<-a> op
 
 Print all matches instead of just the first one.
 
+=head2 --alien Alien::Name
+
+Include Perl Alien in search, if available
+
 =head2 -s
 
 No output, just return 0 if any of the DLLs are found, or 1 if none are found.

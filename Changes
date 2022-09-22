@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Added --alien option (gh#6)
 
 0.03      2019-02-16 18:11:22 -0500
   - Prereq fix: bump version of Test::Script
