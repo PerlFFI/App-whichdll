@@ -1,2 +1,4 @@
 /App-whichdll-*
 /.build
+*.old
+*.orig
